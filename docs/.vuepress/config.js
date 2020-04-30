@@ -1,6 +1,6 @@
 module.exports = {
   base: '/NTU-Thesis/',
-  title: '國立臺灣大學論文模板',
+  title: '國立臺灣大學碩博士論文模板',
   description: '',
   head: [
     ['link', { rel: 'stylesheet', href: "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" }],
@@ -9,7 +9,6 @@ module.exports = {
     ['link', { rel: "icon", type: "image/svg+xml", size: "any", href: "/favicon.png" }]
   ],
 
-  theme: 'antdocs',
   themeConfig: {
     logo: '/favicon.png',
     nav: [

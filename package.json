@@ -11,8 +11,5 @@
   },
   "devDependencies": {
     "vuepress": "^1.4.1"
-  },
-  "dependencies": {
-    "vuepress-theme-antdocs": "^1.0.1"
   }
 }
