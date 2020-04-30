@@ -1,4 +1,14 @@
 {
+  "name": "ntuthesis",
+  "version": "1.0.0",
+  "repository": "git@github.com:Hsins/NTU-Thesis.git",
+  "author": "hsins <hsinspeng@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "deploy": "yarn run docs:build && gh-pages -d docs/.vuepress/dist"
+  },
   "devDependencies": {
     "vuepress": "^1.4.1"
   },
