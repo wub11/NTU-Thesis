@@ -52,6 +52,8 @@
 \newcommand{\ntu@keyword@zh}{關鍵字：}
 \newcommand{\ntu@kwsymbol@zh}{、}
 \newcommand{\ntu@appendix@zh}{附錄}
+\newcommand{\ntu@figurename@zh}{圖}
+\newcommand{\ntu@tablename@zh}{表}
 
 \newcommand{\ntu@titlechapter@zh}{第\CJKnumber{\thechapter}章}
 \newcommand{\ntu@titlechaptertoc@zh}{第\CJKnumber{\thecontentslabel}章}
@@ -69,6 +71,8 @@
 \newcommand{\ntu@keyword@en}{Keywords:~}
 \newcommand{\ntu@kwsymbol@en}{,~}
 \newcommand{\ntu@appendix@en}{Appendix}
+\newcommand{\ntu@figurename@en}{Figure}
+\newcommand{\ntu@tablename@en}{Table}
 
 \newcommand{\ntu@titlechapter@en}{Chapter~\thechapter}
 \newcommand{\ntu@titlechaptertoc@en}{Chapter~\thecontentslabel}
@@ -392,6 +396,8 @@
   \newcommand{\ntu@verificationletter}{\ntu@verificationletter@zh}
   \newcommand{\ntu@bibliography}{\ntu@bibliography@zh}
   \newcommand{\ntu@appendix}{\ntu@appendix@zh}
+  \newcommand{\ntu@figurename}{\ntu@figurename@zh}
+  \newcommand{\ntu@tablename}{\ntu@tablename@zh}
 
   % 設定單位
   \newcommand{\ntu@tocsecindent}{\ntu@tocsecindent@zh}
@@ -415,6 +421,8 @@
   \newcommand{\ntu@verificationletter}{\ntu@verificationletter@en}
   \newcommand{\ntu@bibliography}{\ntu@bibliography@en}
   \newcommand{\ntu@appendix}{\ntu@appendix@en}
+  \newcommand{\ntu@figurename}{\ntu@figurename@en}
+  \newcommand{\ntu@tablename}{\ntu@tablename@en}
 
   % 設定單位
   \newcommand{\ntu@tocsecindent}{\ntu@tocsecindent@en}
@@ -491,6 +499,9 @@
 % --------------------------------------------------
 % 10 套件設定 (Package Settings)
 % --------------------------------------------------
+
+% [圖表目錄]
+\graphicspath{{./figures/}}
 
 % [文章排版]
 %
@@ -620,6 +631,11 @@
 % --------------------------------------------------
 % 08 自訂命令（Custom Commands）
 % --------------------------------------------------
+
+% [添加路徑]
+\newcommand\appendgraphicspath[1]{
+  \g@addto@macro\Ginput@path{#1}
+}
 
 % [中文縮進]
 % - \Eindent                    縮進
@@ -790,11 +806,13 @@
   \tableofcontents
 }
 
+\let\oldnumberline\numberline
 \renewcommand{\listfigurename}{\centerline{\ntu@listoffigures}}
 \newcommand{\makelistoffigures}{
   \cleardoublepage
   \phantomsection
   \addcontentsline{toc}{chapter}{\ntu@listoffigures}
+  \renewcommand{\numberline}{\figurename~\oldnumberline}
   \listoffigures
 }
 
@@ -803,6 +821,7 @@
   \cleardoublepage
   \phantomsection
   \addcontentsline{toc}{chapter}{\ntu@listoftables}
+  \renewcommand{\numberline}{\tablename~\oldnumberline}
   \listoftables
 }
 
@@ -900,7 +919,7 @@
 % 根據設定決定是否添加浮水印
 % Insert watermark according to the config.
 %
-\ifthenelse{\equal{\ntu@watermark}{true}}{\makewatermark{0.25}{figures/seal.pdf}}{}
+\ifthenelse{\equal{\ntu@watermark}{true}}{\makewatermark{0.25}{seal}}{}
 
 % 根據設定決定是否添加數位標識
 % Insert DOI according to the config.
@@ -912,6 +931,6 @@
 % 1.6：2.0 倍行距
 \setstretch{1.6}
 
-% 中文化
-% \newcommand{\loflabel}{圖}
-% \newcommand{\lotlabel}{表}
+% 套用翻譯
+\renewcommand{\figurename}{\ntu@figurename}
+\renewcommand{\tablename}{\ntu@tablename}
