@@ -494,7 +494,7 @@
 \RequirePackage{paralist}
 \RequirePackage{footmisc}
 \RequirePackage{caption}
-\RequirePackage{subcaption}
+\RequirePackage[labelformat=simple]{subcaption}
 
 % --------------------------------------------------
 % 10 套件設定 (Package Settings)
@@ -569,10 +569,11 @@
 % [連結設定]
 %
 \hypersetup{
-  colorlinks,
+  colorlinks=true,
   linkcolor=black,
+  filecolor=gray,
   anchorcolor=blue,
-  citecolor=green
+  citecolor=blue
 }
 
 % [目錄格式]
@@ -627,6 +628,10 @@
 \captionsetup[table]{position=top,belowskip={12bp-\intextsep},aboveskip=6bp}
 \captionsetup[figure]{position=bottom,belowskip={12bp-\intextsep},aboveskip=6bp}
 \captionsetup[sub]{skip=6bp}
+
+% [引用格式]
+%
+\renewcommand\thesubfigure{~(\alph{subfigure})}
 
 % --------------------------------------------------
 % 08 自訂命令（Custom Commands）
